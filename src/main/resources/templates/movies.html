@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+
+<div class="container-fluid">
+    <h2>Movies</h2>
+    <table class="table table-hover table-bordered table-dark">
+        <thead>
+        <tr>
+            <th>Title</th><th>Year Released</th><th>Director</th><th>Category</th><th>Disc</th><th>Location</th>
+        </tr>
+        </thead>
+        <th:block th:each="movie : ${movies}">
+            <tr>
+                <td th:text="${movie.title}" class="align-middle"></td>
+                <td th:text="${movie.year_released}" class="align-middle"></td>
+                <td th:text="${movie.director}" class="align-middle"></td>
+                <td th:text="${movie.category}" class="align-middle"></td>
+                <td th:text="${movie.disc}" class="align-middle"></td>
+                <td th:text="${movie.location}" class="align-middle"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+
+</body>
+</html>
