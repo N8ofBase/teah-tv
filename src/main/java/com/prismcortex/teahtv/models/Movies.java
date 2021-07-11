@@ -2,18 +2,10 @@ package com.prismcortex.teahtv.models;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.util.Objects;
 
 @Entity
-public class Movies {
-
-    @Id
-    @GeneratedValue
-    private int movie_id;
+public class Movies extends AbstractEntity{
 
     @NotBlank
     private String title;
@@ -94,23 +86,9 @@ public class Movies {
         this.location = location;
     }
 
-    public int getMovie_id() {
-        return movie_id;
-    }
 
     @Override
     public String toString() {return title;}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Movies movies = (Movies) o;
-        return movie_id == movies.movie_id;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(movie_id);
-    }
 }
