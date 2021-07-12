@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class Movies extends AbstractEntity{
 
+
     @NotBlank
     private String title;
 

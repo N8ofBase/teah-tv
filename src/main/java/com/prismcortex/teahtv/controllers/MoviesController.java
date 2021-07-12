@@ -17,7 +17,8 @@ public class MoviesController {
 
     @RequestMapping("")
     public String index(Model model) {
-        model.addAttribute("title", "ALL MY MOVIES");
+        model.addAttribute("title", "Home");
+        model.addAttribute("movies", moviesRepository.findAll());
         return "movies";
     }
 
@@ -33,11 +34,5 @@ public class MoviesController {
         return "add";
     }
 
-
-    @GetMapping("add")
-    public String addMovies(Model model) {
-
-        return "movies/add";
-    }
 
 }
