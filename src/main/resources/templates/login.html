@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header"></header>
+<header>Log In to Teah T.V.</header><b></b>
 
 <form method="post">
     <div class="form-group">
@@ -17,10 +17,12 @@
             <input class="form-control" th:field="${loginFormDTO.password}" type="password"/>
         </label>
         <p class="error" th:errors="${loginFormDTO.password}"></p>
-    </div>
-
+    </div><br>
+    <div>
     <input type="submit" class="btn btn-primary" value="Log In"/>
+    </div>
 </form>
+<br>
 <p>Don't have an account? <a href="register">Register for one here.</a></p>
 
 </body>

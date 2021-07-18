@@ -1,8 +1,13 @@
 package com.prismcortex.teahtv.models;
 
-
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 public class Movies extends AbstractEntity{
@@ -11,17 +16,21 @@ public class Movies extends AbstractEntity{
     @NotBlank
     private String title;
 
-    @NotBlank
+    @NotNull(message = "Must enter year released")
     private int year_released;
 
     @NotBlank
     private String director;
 
     @NotBlank
-    private String category;
+    private Category category;
 
-    @NotBlank
-    private String disc;
+    @ManyToMany
+    private List<Category> categories = new ArrayList<>();
+
+    @ManyToOne
+    @NotNull
+    private Disc disc;
 
     @NotBlank
     private String location;
@@ -29,8 +38,8 @@ public class Movies extends AbstractEntity{
     public Movies() {
     }
 
-    public Movies(String aTitle, int aYear_released, String aDirector, String aCategory,
-                  String aDisc, String aLocation) {
+    public Movies(String aTitle, int aYear_released, String aDirector, Category aCategory,
+                  Disc aDisc, String aLocation) {
         this.title = aTitle;
         this.year_released = aYear_released;
         this.director = aDirector;
@@ -63,19 +72,21 @@ public class Movies extends AbstractEntity{
         this.director = director;
     }
 
-    public String getCategory() {
-        return category;
+    public List getCategories() {
+        return categories;
     }
 
-    public void setCategory(String category) {
+    public Category getCategory(){return category;}
+
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public String getDisc() {
+    public Disc getDisc() {
         return disc;
     }
 
-    public void setDisc(String disc) {
+    public void setDisc(Disc disc) {
         this.disc = disc;
     }
 
@@ -87,6 +98,9 @@ public class Movies extends AbstractEntity{
         this.location = location;
     }
 
+    public void addCategory(Category category) {
+        this.categories.add(category);
+    }
 
     @Override
     public String toString() {return title;}
