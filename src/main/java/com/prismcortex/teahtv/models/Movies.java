@@ -23,7 +23,7 @@ public class Movies extends AbstractEntity{
     private String director;
 
     @NotBlank
-    private Category category;
+    private String category;
 
     @ManyToMany
     private List<Category> categories = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Movies extends AbstractEntity{
     public Movies() {
     }
 
-    public Movies(String aTitle, int aYear_released, String aDirector, Category aCategory,
+    public Movies(String aTitle, int aYear_released, String aDirector, String aCategory,
                   Disc aDisc, String aLocation) {
         this.title = aTitle;
         this.year_released = aYear_released;
@@ -76,9 +76,9 @@ public class Movies extends AbstractEntity{
         return categories;
     }
 
-    public Category getCategory(){return category;}
+    public String getCategory(){return category;}
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

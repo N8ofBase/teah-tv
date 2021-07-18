@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+<header th:replace="fragments :: header"></header>
+<h1>Add Movie</h1><br>
+
+<form method="post" style="max-width:800px;">
+    <div class="form-group">
+        <h3>Movie Title: </h3>
+        <input class="form-control" th:field="${movie.title}"/>
+        <span th:errors="${movie.title}" class="error"></span>
+    </div>
+<br>
+    <div class="form-group">
+        <h3>Year Released: </h3>
+        <input class="form-control" th:field="${movie.year_released}"/>
+        <span th:errors="${movie.year_released}" class="error"></span>
+
+    </div>
+<br>
+    <div class="form-group">
+        <h3>Director: </h3>
+    <input class="form-control" th:field="${movie.director}"/>
+    <span th:errors="${movie.director}" class="error"></span>
+
+    </div>
+<br>
+    <h3>Category: </h3>
+
+    <div class="form-check form-check-inline" th:each="category : ${categories}">
+
+        <input class="form-check-input" type="checkbox" th:field="${movie.category}" th:value="${category}"
+        th:text="${category}"/>
+
+        <span th:errors="${movie.category}" class="error"></span>
+
+    </div>
+    <a th:href="@{'/category/add}">Add Category</a>
+<br><br>
+    <h4>Disc Type: </h4>
+    <div class="form-check form-check-inline" th:each="disc : ${discTypes}">
+
+    <input class="form-check-input" type="radio" th:field="${movie.disc}" th:value="${disc.name}" th:text="${disc.name}"/>
+
+        <span th:errors="${movie.disc}" class="error"></span>
+
+    </div>
+    <a th:href="@{'/disc/add}">Add Disc Type</a>
+<br><br>
+    <div class="form-group">
+        <h4>Location: </h4>
+    <input class="form-control" th:field="${movie.location}"/>
+        <span th:errors="${movie.location}" class="error"></span>
+
+    </div>
+    <br>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Add Movie</button>
+
+    </div>
+
+</form>
+
+
+</body>
+</html>

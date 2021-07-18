@@ -1,0 +1,15 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+<header th:replace="fragments :: header"></header>
+
+<div>
+    <h1>Disc Types</h1>
+    <ul>
+        <li th:each="disc : ${discTypes}" th:text="${disc.name}"></li>
+    </ul>
+    <a th:href="@{'/disc/add'}">Add Disc Type</a>
+</div>
+
+</body>
+</html>
