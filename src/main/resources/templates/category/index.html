@@ -6,7 +6,7 @@
 <div>
     <h1>Categories</h1>
     <ul>
-        <li th:each="category : ${categories}" th:text="${category.name}"></li>
+        <li th:each="category : ${categories}" th:text="${category.categoryName}"></li>
     </ul>
     <a th:href="@{'/category/add'}">Add Category</a>
 </div>

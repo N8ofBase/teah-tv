@@ -5,12 +5,18 @@
 
 <form method="post" style="max-width:600px;">
     <div class="form-group>">
-        <label th:for="name">Category Name</label>
-        <input class="form-control" th:field="${category.name}"/>
-        <span th:errors="${category.name}" class="error"></span>
+        <label>New Category</label>
+        <input class="form-control" th:field="${category.categoryName}" type="text"/>
+        <span th:errors="${category.CategoryName}" class="error"></span>
     </div>
 
 </form>
-
+<div>
+<h1>Categories</h1>
+<ul>
+    <li th:each="category : ${categories}" th:text="${category.categoryName}"></li>
+</ul>
+    <a th:href="@{'/movies'}">Movie List</a>
+</div>
 </body>
 </html>

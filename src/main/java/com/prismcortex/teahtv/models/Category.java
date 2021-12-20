@@ -1,35 +1,39 @@
 package com.prismcortex.teahtv.models;
 
+
+import javax.validation.constraints.NotNull;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.Size;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 public class Category extends AbstractEntity{
+    @NotNull(message = "Name required")
+    private String categoryName;
 
-    @Size(min=3, message="Category must be at least 3 characters.")
-    private String name;
-
-    @ManyToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "category")
     private final List<Movies> movies = new ArrayList<>();
-
-    public Category(@Size(min=3, message="Category must be at least 3 characters.") String name) {
-        this.name=name;
-    }
 
     public Category() {}
 
-    public String getName() {
-        return name;
+    public Category(String categoryName) {
+        this.categoryName=categoryName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public List<Movies> getMovies() {
+        return movies;
     }
 
     @Override
-    public String toString() {
-        return name;
-    }
+    public String toString() {return categoryName;}
 }

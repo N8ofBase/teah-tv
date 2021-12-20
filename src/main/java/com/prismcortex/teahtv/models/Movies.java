@@ -1,51 +1,47 @@
 package com.prismcortex.teahtv.models;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Entity
 public class Movies extends AbstractEntity{
 
+    @NotBlank
+    private String location;
 
     @NotBlank
     private String title;
 
-    @NotNull(message = "Must enter year released")
-    private int year_released;
-
     @NotBlank
     private String director;
 
-    @NotBlank
-    private String category;
-
-    @ManyToMany
-    private List<Category> categories = new ArrayList<>();
+    @NotNull(message = "Must enter year released")
+    private int year;
 
     @ManyToOne
-    @NotNull
-    private Disc disc;
+    @NotNull(message = "Category is required")
+    private Category category;
 
-    @NotBlank
-    private String location;
+    @NotNull
+    private String format;
+
+    private String notes;
+
+
 
     public Movies() {
     }
 
-    public Movies(String aTitle, int aYear_released, String aDirector, String aCategory,
-                  Disc aDisc, String aLocation) {
-        this.title = aTitle;
-        this.year_released = aYear_released;
-        this.director = aDirector;
-        this.category = aCategory;
-        this.disc = aDisc;
-        this.location = aLocation;
+    public Movies(String location, String title, String director, int year,
+                  Category category, String format, String notes) {
+        this.location=location; this.title = title; this.director=director;
+        this.year=year; this.category=category; this.format=format; this.notes=notes;
+
     }
 
     public String getTitle() {
@@ -56,12 +52,12 @@ public class Movies extends AbstractEntity{
         this.title = title;
     }
 
-    public int getYear_released() {
-        return year_released;
+    public int getYear() {
+        return year;
     }
 
-    public void setYear_released(int year_released) {
-        this.year_released = year_released;
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public String getDirector() {
@@ -72,22 +68,18 @@ public class Movies extends AbstractEntity{
         this.director = director;
     }
 
-    public List getCategories() {
-        return categories;
-    }
+    public Category getCategory(){return category;}
 
-    public String getCategory(){return category;}
-
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public Disc getDisc() {
-        return disc;
+    public String getFormat() {
+        return format;
     }
 
-    public void setDisc(Disc disc) {
-        this.disc = disc;
+    public void setFormat(String format) {
+        this.format = format;
     }
 
     public String getLocation() {
@@ -98,8 +90,12 @@ public class Movies extends AbstractEntity{
         this.location = location;
     }
 
-    public void addCategory(Category category) {
-        this.categories.add(category);
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override

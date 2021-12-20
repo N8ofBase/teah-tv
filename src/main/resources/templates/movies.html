@@ -6,6 +6,109 @@
 
 <div class="container-fluid">
     <h2>Movies</h2>
+    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="addMovie()">Add Movie</button>
+    <div>
+        <h1 class="text-center">Add Movie</h1>
+
+        <form method="post">
+            <div class="row">
+                <div class="col-md mx-3 mb-3">
+                    <input th:field="${movie.title}" id="title" type="text" class="form-control" placeholder="Movie Title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 mx-3 mb-3">
+                    <input th:field="${movie.director}" id="director" type="text" class="form-control" placeholder="Director">
+                </div>
+                <div class="col-sm-3 mx-3 mb-3">
+                    <input th:field="${movie.year}" id="year" type="text" class="form-control" value="" placeholder="Year Released">
+                </div>
+            </div>
+            <div class="text-center">
+                <h6 class="text-center"><u>Categories</u></h6>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="animated" class="form-check-input" type="checkbox" name="category" id="animated">
+                    <label class="form-check-label" for="animated">Animated</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="best" class="form-check-input" type="checkbox" name="category" id="best">
+                    <label class="form-check-label" for="best">Best Picture</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="christmas" class="form-check-input" type="checkbox" name="category" id="christmas">
+                    <label class="form-check-label" for="christmas">Christmas</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="disney" class="form-check-input" type="checkbox" name="category" id="disney">
+                    <label class="form-check-label" for="disney">Disney</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="docu" class="form-check-input" type="checkbox" name="category" id="docu">
+                    <label class="form-check-label" for="docu">Documentary</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="dc" class="form-check-input" type="checkbox" name="category" id="dc">
+                    <label class="form-check-label" for="dc">D.C.</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="marvel" class="form-check-input" type="checkbox" name="category" id="marvel">
+                    <label class="form-check-label" for="marvel">Marvel</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="music" class="form-check-input" type="checkbox" name="category" id="music">
+                    <label class="form-check-label" for="music">Musical</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="pixar" class="form-check-input" type="checkbox" name="category" id="pixar">
+                    <label class="form-check-label" for="pixar">Pixar</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="oscar" class="form-check-input" type="checkbox" name="category" id="oscar">
+                    <label class="form-check-label" for="oscar">Oscar</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.category}" value="tv" class="form-check-input" type="checkbox" name="category" id="tv">
+                    <label class="form-check-label" for="tv">T.V.</label>
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <h6 class="text-center"><u>Format</u></h6>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.format}" value="dvd" class="form-check-input" type="radio" name="format" id="dvd">
+                    <label class="form-check-label" for="dvd">DVD</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.format}" value="blu" class="form-check-input" type="radio" name="format" id="blu">
+                    <label class="form-check-label" for="blu">Blu-Ray</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.format}" value="digi" class="form-check-input" type="radio" name="format" id="digi">
+                    <label class="form-check-label" for="digi">Digital</label>
+                </div>
+                <div class="form-check form-check-inline mx-1 mb-3">
+                    <input th:field="${movie.format}" value="4k" class="form-check-input" type="radio" name="format" id="4k">
+                    <label class="form-check-label" for="4k">4k Ultra HD</label>
+                </div>
+            </div>
+            <br>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm-3 mx-3 mb-3">
+                    <input th:field="${movie.location}" id="locate" type="text" class="form-control" placeholder="Location">
+                </div>
+                <div class="col-sm-6 mx-3 mb-3">
+                    <textarea th:field="${movie.notes}" id="notes" class="form-control" rows="3" placeholder="Notes"></textarea>
+                </div>
+            </div>
+            <br>
+            <div class="d-grid gap-2 mx-3 text-center">
+                <button class="btn btn-secondary" type="submit">Add Movie</button>
+            </div>
+
+        </form>
+
+    </div>
+
     <table class="table table-hover table-bordered table-dark">
         <thead>
         <tr>
